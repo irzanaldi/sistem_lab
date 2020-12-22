@@ -20,8 +20,9 @@ Route::get('/dasboard', function () {
 });
 
 Route::get('/pasien', function () {
-    return view('pasien');
+    return view('form/pasien');
 });
+
 
 
 
