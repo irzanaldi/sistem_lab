@@ -4,14 +4,14 @@
 
 @section('content')
 
-    <h1>Master Pasien</h1>
+    <h1>Master Test</h1>
 
         <form action="" method = "POST">
           <input type="text" id="caritest" class="fadeIn second" name="caritest" placeholder="Masukkan nama test">  
           <input type="submit" class="fadeIn fourth" value="Cari"> 
         </form>
 
-    <button>Input data test</button>
+        <a href="/inputtest">input</a>
 
     <table class="table">
   <thead>

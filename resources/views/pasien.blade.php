@@ -8,10 +8,10 @@
 
         <form action="" method = "POST">
           <input type="text" id="caripasien" class="fadeIn second" name="caripasien" placeholder="Masukkan nama pasien">  
-          <input type="submit" class="fadeIn fourth" value="Cari"> 
+          <input type="submit" class="fadeIn fourth" value="Cari" href="/form/pasien"> 
         </form>
 
-    <button>Input data pasien</button>
+    <a href="/inputpasien">input</a>
 
     <table class="table">
   <thead>

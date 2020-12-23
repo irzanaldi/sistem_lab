@@ -39,7 +39,7 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="/dashboard">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
                         </a>
@@ -53,9 +53,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Master :</h6>
-                        <a class="collapse-item" href="buttons.html">Pasien</a>
-                        <a class="collapse-item" href="cards.html">Instansi</a>
-                        <a class="collapse-item" href="cards.html">Test</a>
+                        <a class="collapse-item" href="/pasien">Pasien</a>
+                        <a class="collapse-item" href="/instansi">Instansi</a>
+                        <a class="collapse-item" href="/test">Test</a>
                     </div>
                 </div>
             </li>
@@ -95,7 +95,7 @@
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                    <span class="d-lg-none">Dashboard</span>
+                                    <span class="d-lg-none">Dasboard</span>
                                 </a>
                             </li>
                         </ul>

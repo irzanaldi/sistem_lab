@@ -15,15 +15,33 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dasboard', function () {
-    return view('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
 
 Route::get('/pasien', function () {
+    return view('pasien');
+});
+
+Route::get('/instansi', function () {
+    return view('instansi');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/inputtest', function () {
+    return view('form/test');
+});
+
+Route::get('/inputpasien', function () {
     return view('form/pasien');
 });
 
-
+Route::get('/inputinstansi', function () {
+    return view('form/instansi');
+});
 
 
 /*

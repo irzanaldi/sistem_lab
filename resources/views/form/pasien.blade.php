@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @section ('tittle', 'Dasboard')
 @section('content')
+<h1>Form Input Pasien</h1>
 <form>
  <div class="row mb-3">
   <div class="col-md-6">
@@ -48,7 +49,7 @@
   </div>
   <div div class="col-12 mt-5">
     <button type="submit" class="btn btn-primary">Simpan</button>
-    <button type="submit" class="btn btn-danger">Batal</button>
+    <button type="submit" class="btn btn-danger"><a href="/pasien" style="color:inherit; text-decoration: none;">Batal</a></button>
   </>
   
   

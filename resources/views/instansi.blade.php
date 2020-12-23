@@ -11,7 +11,7 @@
           <input type="submit" class="fadeIn fourth" value="Cari"> 
         </form>
 
-    <button>Input data intansi</button>
+        <a href="/inputinstansi">input</a>
 
     <table class="table">
   <thead>
