@@ -31,6 +31,14 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/pemeriksaan', function () {
+    return view('pemeriksaan');
+});
+
+Route::get('/tagihan', function () {
+    return view('tagihan');
+});
+
 Route::get('/inputtest', function () {
     return view('form/test');
 });

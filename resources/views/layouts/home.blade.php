@@ -60,7 +60,7 @@
                 </div>
             </li>
                     <li>
-                        <a class="nav-link" href="./table.html">
+                        <a class="nav-link" href="/pemeriksaan">
                             <i class="nc-icon nc-notes"></i>
                             <p>Pemeriksaan</p>
                         </a>
@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./icons.html">
+                        <a class="nav-link" href="/tagihan">
                             <i class="nc-icon nc-atom"></i>
                             <p>Tagihan</p>
                         </a>
