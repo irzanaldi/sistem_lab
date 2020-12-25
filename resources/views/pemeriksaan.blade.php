@@ -56,15 +56,17 @@
   <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nama Test</th>
+      <th scope="col">Jenis Test</th>
+      <th scope="col">Bahan</th>
+      <th scope="col">Harga</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">
+      <input type="text" class="form-control" id="nomer">
+      </th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>

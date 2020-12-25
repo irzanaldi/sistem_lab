@@ -1,21 +1,12 @@
 @extends('layouts.home')
 
-@section('tittle', 'Data Tagihan')
+@section('tittle', 'Master Pasien')
 
 @section('content')
 
-    <h1>Tagihan</h1>
-
-        <form action="" method = "POST">
-        <div class="row">
-        <div class="col-md-3">
-  <label for="inputAddress" class="form-label">Instansi</label>
-    <select class="form-select form-control" aria-label="Default select example">
-        <option selected>Instansi</option>
-        <option value="1">Laki-Laki</option>
-        <option value="2">Perempuan</option>
-    </select>
-  </div>
+    <h1>Laporan</h1>
+<form action="" method = "POST">
+ <div class="row">
   <div class="col-md-3">
   <label for="inputAddress" class="form-label">Bulan</label>
     <select class="form-select form-control" aria-label="Default select example">
@@ -24,6 +15,7 @@
         <option value="2">Perempuan</option>
     </select>
   </div>
+        <button type="submit" class="btn btn-danger mr-3"><a href="/inputlaporan" style="color:inherit; text-decoration: none;">Masukkan Pengeluaran</a></button>
         <button type="submit" class="btn btn-primary">Cetak</button>
         </div>
   

@@ -39,6 +39,10 @@ Route::get('/tagihan', function () {
     return view('tagihan');
 });
 
+Route::get('/laporan', function () {
+    return view('laporan');
+});
+
 Route::get('/inputtest', function () {
     return view('form/test');
 });
