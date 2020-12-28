@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('index');
 });
+*/
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/', 'LoginController@login');
+Route::get('/dashboard', 'LoginController@index');
+Route::post('/login', 'LoginController@postlogin');
+
+Route::get('/logout', 'LoginController@logout');
+
+
 
 Route::get('/pasien', function () {
     return view('pasien');
@@ -59,5 +64,5 @@ Route::get('/inputinstansi', function () {
 /*
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 */

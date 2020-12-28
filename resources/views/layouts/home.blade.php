@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>@yield('title')</title>
 
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/dasboard/img/apple-icon.png') }}">
@@ -39,7 +36,7 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">
+                        <a class="nav-link" href="{{ url('/dashboard') }}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
                         </a>
@@ -53,31 +50,30 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Master :</h6>
-                        <a class="collapse-item" href="/pasien">Pasien</a>
-                        <a class="collapse-item" href="/instansi">Instansi</a>
-                        <a class="collapse-item" href="/test">Test</a>
+                        <a class="collapse-item" href="{{ url('/pasien') }}">Pasien</a>
+                        <a class="collapse-item" href="{{ url('/instansi') }}">Instansi</a>
+                        <a class="collapse-item" href="{{ url('/test') }}">Test</a>
                     </div>
                 </div>
             </li>
                     <li>
-                        <a class="nav-link" href="/pemeriksaan">
+                        <a class="nav-link" href="{{ url('/pemeriksaan') }}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Pemeriksaan</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/laporan">
+                        <a class="nav-link" href="{{ url('/laporan') }}">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Laporan</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/tagihan">
+                        <a class="nav-link" href="{{ url('/tagihan') }}">
                             <i class="nc-icon nc-atom"></i>
                             <p>Tagihan</p>
                         </a>
                     </li>
-                  
                 </ul>
             </div>
         </div>
@@ -115,7 +111,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="{{ url('/logout') }}">
                                     <span class="no-icon">Log out</span>
                                 </a>
                             </li>

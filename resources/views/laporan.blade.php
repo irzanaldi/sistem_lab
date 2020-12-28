@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('tittle', 'Master Pasien')
+@section('tittle', 'Master Laporan')
 
 @section('content')
 
@@ -8,18 +8,18 @@
 <form action="" method = "POST">
  <div class="row">
   <div class="col-md-3">
-  <label for="inputAddress" class="form-label">Bulan</label>
+    <label for="inputAddress" class="form-label">Bulan</label>
     <select class="form-select form-control" aria-label="Default select example">
         <option selected>Pilih bulan</option>
         <option value="1">Januari</option>
         <option value="2">Perempuan</option>
     </select>
   </div>
-        <button type="submit" class="btn btn-danger mr-3"><a href="/inputlaporan" style="color:inherit; text-decoration: none;">Masukkan Pengeluaran</a></button>
+        <button type="submit" class="btn btn-danger mr-3"><a href="{{ url('/inputlaporan') }}" style="color:inherit; text-decoration: none;">Masukkan Pengeluaran</a></button>
         <button type="submit" class="btn btn-primary">Cetak</button>
-        </div>
+  </div>
   
-        </form>
+</form>
 
     <table class="table mt-5">
   <thead>

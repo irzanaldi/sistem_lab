@@ -11,7 +11,7 @@
           <input type="submit" class="fadeIn fourth" value="Cari"> 
         </form>
 
-        <a href="/inputinstansi">input</a>
+        <a href="{{ url('/inputinstansi') }}">input</a>
 
     <table class="table">
   <thead>
