@@ -19,7 +19,6 @@
 Route::get('/', 'LoginController@login');
 Route::get('/dashboard', 'LoginController@index');
 Route::post('/login', 'LoginController@postlogin');
-
 Route::get('/logout', 'LoginController@logout');
 
 

@@ -17,7 +17,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if(!Session::get('index')){
+        if(!Session::get('login')){
             return redirect('/')->with('alert','Kamu harus login dulu');
         }
         else{

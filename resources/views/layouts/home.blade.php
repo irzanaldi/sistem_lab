@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{ asset('assets/dasboard/js/Chart.js') }}"></script>
 
     <title>@yield('title')</title>
 
@@ -135,7 +136,7 @@
 <!--  Google Maps Plugin    -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!--  Chartist Plugin  -->
-<script src="{{ asset('assets/dasboard/js/plugins/chartist.min.js') }}"></script>
+
 <!--  Notifications Plugin    -->
 <script src="{{ asset('assets/dasboard/js/plugins/bootstrap-notify.js') }}"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
@@ -149,5 +150,7 @@
         demo.showNotification();
 
     });
+
+    
 </script>
 </html>
