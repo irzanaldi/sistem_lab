@@ -16,30 +16,25 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Instansi</th>
+      <th scope="col">Jenis Kelamin</th>
+      <th scope="col">Umur</th>
+      <th scope="col">Alamat</th>
+      <th scope="col">No Telpon</th>
     </tr>
   </thead>
   <tbody>
+  @foreach($data_pasien as $psn)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{$psn->nama}}</td>
+      <td>{{$psn->nama_instansi}}</td>
+      <td>{{$psn->jenis_kelamin}}</td>
+      <td>{{$psn->umur}}</td>
+      <td>{{$psn->alamat}}</td>
+      <td>{{$psn->no_telp}}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 

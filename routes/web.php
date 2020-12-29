@@ -20,12 +20,8 @@ Route::get('/', 'LoginController@login');
 Route::get('/dashboard', 'LoginController@index');
 Route::post('/login', 'LoginController@postlogin');
 Route::get('/logout', 'LoginController@logout');
-
-
-
-Route::get('/pasien', function () {
-    return view('pasien');
-});
+Route::get('/pasien', 'MasterPasien@index');
+Route::get('/inputpasien', 'MasterPasien@create');
 
 Route::get('/instansi', function () {
     return view('instansi');
@@ -51,9 +47,6 @@ Route::get('/inputtest', function () {
     return view('form/test');
 });
 
-Route::get('/inputpasien', function () {
-    return view('form/pasien');
-});
 
 Route::get('/inputinstansi', function () {
     return view('form/instansi');
