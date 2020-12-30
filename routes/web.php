@@ -22,6 +22,7 @@ Route::post('/login', 'LoginController@postlogin');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/pasien', 'MasterPasien@index');
 Route::get('/inputpasien', 'MasterPasien@create');
+Route::post('/input', 'MasterPasien@store');
 
 Route::get('/instansi', function () {
     return view('instansi');

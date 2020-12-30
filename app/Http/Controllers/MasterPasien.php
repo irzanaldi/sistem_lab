@@ -40,7 +40,23 @@ class MasterPasien extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*DB::table(data_pasien)->insert([
+            'kd_instansi'=> $request => kd_instansi,
+            'pegawai_nama' => $request->nama,
+
+        ]);*/
+
+        DB::table('data_pasien')->insert([
+            'kd_instansi' => $request->instansi,
+            'nama' => $request->namapasien,
+            'inisial' => $request->inisial,
+            'jenis_kelamin' => $request->jk,
+            'umur' => $request->umur,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->nomer
+        ]);
+
+        return redirect('/pasien');
     }
 
     /**
