@@ -4,6 +4,13 @@
 
 @section('content')
 
+
+@if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block">
+          <strong>{{ $message }}</strong>
+      </div>
+@endif
+
     <h1>Master Pasien</h1>
 
         <form action="" method = "POST">
@@ -16,6 +23,7 @@
     <table class="table">
   <thead>
     <tr>
+      <th scope="col">No</th>
       <th scope="col">Nama</th>
       <th scope="col">Instansi</th>
       <th scope="col">Jenis Kelamin</th>
@@ -27,6 +35,7 @@
   <tbody>
   @foreach($data_pasien as $psn)
     <tr>
+      <td>{{$loop->iteration}}</td>
       <td>{{$psn->nama}}</td>
       <td>{{$psn->nama_instansi}}</td>
       <td>{{$psn->jenis_kelamin}}</td>

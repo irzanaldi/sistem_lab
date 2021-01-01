@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\DB;
 
-class MasterPasien extends Controller
+class MasterInstansi extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,9 @@ class MasterPasien extends Controller
      */
     public function index()
     {
-        $pasien=DB::table('data_pasien')
-        ->join('data_instansi', 'data_pasien.kd_instansi', '=', 'data_instansi.kd_instansi')
-        ->get();
-        return view ('pasien', ['data_pasien' => $pasien]);
+        //
+        $instansi=DB::table('data_instansi')->get();
+        return view ('instansi', ['data_instansi' => $instansi]);
     }
 
     /**
@@ -28,8 +27,7 @@ class MasterPasien extends Controller
      */
     public function create()
     {
-        $instansi = DB::table('data_instansi')->get();
-        return view ('form/pasien', ['instansi'=> $instansi]);
+        //
     }
 
     /**
@@ -40,23 +38,19 @@ class MasterPasien extends Controller
      */
     public function store(Request $request)
     {
-        /*DB::table(data_pasien)->insert([
-            'kd_instansi'=> $request => kd_instansi,
-            'pegawai_nama' => $request->nama,
-
-        ]);*/
-
-        DB::table('data_pasien')->insert([
-            'kd_instansi' => $request->instansi,
-            'nama' => $request->namapasien,
-            'inisial' => $request->inisial,
-            'jenis_kelamin' => $request->jk,
-            'umur' => $request->umur,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->nomer
+        //
+        DB::table('data_instansi')->insert([
+            'nama_instansi' => $request->namainstansi,
+            'dokter' => $request->dokter,
+            'alamat_instansi' => $request->alamat,
+            'kota' => $request->kota,
+            'diskon' => $request->diskon,
+            'npwp' => $request->npwp,
+            'email' => $request->email,
+            'no_telp_instansi' => $request->nomer
         ]);
 
-        return redirect('/pasien')->with(['success' => 'Berhasil Tersimpan']);;
+        return redirect('/instansi')->with(['success' => 'Berhasil Tersimpan']);;
     }
 
     /**

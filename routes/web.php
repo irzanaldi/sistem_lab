@@ -20,13 +20,16 @@ Route::get('/', 'LoginController@login');
 Route::get('/dashboard', 'LoginController@index');
 Route::post('/login', 'LoginController@postlogin');
 Route::get('/logout', 'LoginController@logout');
+
+//Input Pasien
 Route::get('/pasien', 'MasterPasien@index');
 Route::get('/inputpasien', 'MasterPasien@create');
 Route::post('/input', 'MasterPasien@store');
 
-Route::get('/instansi', function () {
-    return view('instansi');
-});
+//Input Instansi
+Route::get('/instansi', 'MasterInstansi@index');
+Route::post('/inputinstansi', 'MasterInstansi@store');
+
 
 Route::get('/test', function () {
     return view('test');
@@ -43,11 +46,6 @@ Route::get('/tagihan', function () {
 Route::get('/laporan', function () {
     return view('laporan');
 });
-
-Route::get('/inputtest', function () {
-    return view('form/test');
-});
-
 
 Route::get('/inputinstansi', function () {
     return view('form/instansi');

@@ -4,6 +4,11 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block">
+          <strong>{{ $message }}</strong>
+      </div>
+@endif
     <h1>Master Intansi</h1>
 
         <form action="" method = "POST">
@@ -13,33 +18,34 @@
 
         <a href="{{ url('/inputinstansi') }}">input</a>
 
-    <table class="table">
+        <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">No</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Dokter</th>
+      <th scope="col">Alamat</th>
+      <th scope="col">Kota</th>
+      <th scope="col">Diskon</th>
+      <th scope="col">NPWP</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nomer Telpon</th>
     </tr>
   </thead>
   <tbody>
+  @foreach($data_instansi as $psn)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{$loop->iteration}}</td>
+      <td>{{$psn->nama_instansi}}</td>
+      <td>Dr. {{$psn->dokter}}</td>
+      <td>{{$psn->alamat_instansi}}</td>
+      <td>{{$psn->kota}}</td>
+      <td>{{$psn->diskon}} %</td>
+      <td>{{$psn->npwp}}</td>
+      <td>{{$psn->email}}</td>
+      <td>{{$psn->no_telp_instansi}}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 

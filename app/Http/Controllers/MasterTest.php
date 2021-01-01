@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
-class MasterPasien extends Controller
+class MasterTest extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,7 @@ class MasterPasien extends Controller
      */
     public function index()
     {
-        $pasien=DB::table('data_pasien')
-        ->join('data_instansi', 'data_pasien.kd_instansi', '=', 'data_instansi.kd_instansi')
-        ->get();
-        return view ('pasien', ['data_pasien' => $pasien]);
+        //
     }
 
     /**
@@ -28,8 +23,7 @@ class MasterPasien extends Controller
      */
     public function create()
     {
-        $instansi = DB::table('data_instansi')->get();
-        return view ('form/pasien', ['instansi'=> $instansi]);
+        //
     }
 
     /**
@@ -40,23 +34,7 @@ class MasterPasien extends Controller
      */
     public function store(Request $request)
     {
-        /*DB::table(data_pasien)->insert([
-            'kd_instansi'=> $request => kd_instansi,
-            'pegawai_nama' => $request->nama,
-
-        ]);*/
-
-        DB::table('data_pasien')->insert([
-            'kd_instansi' => $request->instansi,
-            'nama' => $request->namapasien,
-            'inisial' => $request->inisial,
-            'jenis_kelamin' => $request->jk,
-            'umur' => $request->umur,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->nomer
-        ]);
-
-        return redirect('/pasien')->with(['success' => 'Berhasil Tersimpan']);;
+        //
     }
 
     /**
