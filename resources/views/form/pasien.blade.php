@@ -2,13 +2,13 @@
 @section ('tittle', 'Dasboard')
 @section('content')
 <h1>Form Input Pasien</h1>
-<form action="{{ url('/input') }}" method="POST">
+<form action="{{ url('/inputpasien') }}" method="POST">
 {{ csrf_field() }}
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Kode Instansi</label>
     <select class="form-select form-control" aria-label="Default select example" name="instansi" id="instansi">
-    @foreach($instansi as $ins)
         <option selected>Instansi</option>
+    @foreach($instansi as $ins)
         <option value=" {{ $ins->kd_instansi }} ">({{ $ins->kd_instansi }}) {{ $ins->nama_instansi }}</option>
     @endforeach
     </select>

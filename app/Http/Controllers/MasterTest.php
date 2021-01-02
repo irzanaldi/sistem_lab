@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class MasterTest extends Controller
 {
     /**
@@ -14,6 +16,10 @@ class MasterTest extends Controller
     public function index()
     {
         //
+        $test=DB::table('data_test')
+        ->join('data_jenis', 'data_test.kd_jenis', '=', 'data_jenis.kd_jenis')
+        ->get();
+        return view ('test', ['data_test' => $test]);
     }
 
     /**
@@ -24,6 +30,8 @@ class MasterTest extends Controller
     public function create()
     {
         //
+        $jenistest = DB::table('data_jenis')->get();
+        return view ('form/test', ['jenistest'=> $jenistest]);
     }
 
     /**
@@ -35,6 +43,14 @@ class MasterTest extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('data_test')->insert([
+            'nama' => $request->namatest,
+            'harga' => $request->harga,
+            'bahan' => $request->bahan,
+            'kd_jenis' => $request->jenis
+        ]);
+
+        return redirect('/test')->with(['success' => 'Berhasil Tersimpan']);;
     }
 
     /**
