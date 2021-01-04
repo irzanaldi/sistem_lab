@@ -64,24 +64,14 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">
-      <input type="text" class="form-control" id="nomer">
-      </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>
+      <input type="text" class="form-control" id="nama">
+      </td>
+      <td id="jenis"></td>
+      <td id="bahan"></td>
+      <td id="harga"></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    
   </tbody>
 </table>
   </div>
@@ -93,4 +83,32 @@
   
 </form>
 
+<script type="text/javascript">
+       
+        $(document).ready(function(){
+            $( "#nama" ).autocomplete({
+                source: function( request, response ) {
+                    console.log(request.term)
+                $.ajax({
+                    url:"{{route('cari')}}",
+                    type: 'get',
+                    dataType: "json",
+                    data: {
+                        cari: request.term
+                    },
+                    success: function( data ) {
+                    response( data );
+                    }
+                });
+                },
+                select: function (event, ui) {
+                $('#jenis').val(ui.item.jenis);
+                $('#bahan').val(ui.item.bahan);
+                $('#harga').val(ui.item.harga);
+                return false;
+                }
+            });
+        });
+  </script>
+  
 @endsection

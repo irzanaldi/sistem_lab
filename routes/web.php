@@ -36,9 +36,10 @@ Route::get('/test', 'MasterTest@index');
 Route::get('/formtest', 'MasterTest@create');
 Route::post('/inputtest', 'MasterTest@store');
 
-Route::get('/pemeriksaan', function () {
-    return view('pemeriksaan');
-});
+//input Pemeriksaan
+
+Route::get('/pemeriksaan', 'MasterPemeriksaan@index');
+Route::get('/cari', 'MasterPemeriksaan@create')->name('cari');
 
 Route::get('/tagihan', function () {
     return view('tagihan');
