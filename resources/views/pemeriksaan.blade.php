@@ -52,8 +52,8 @@
 
   <div class="row mt-5">
         <div class="col">
-            <h2>Tabel Test</h2>
-  <table class="table">
+            <h2>Tabel Test</h2> <button type="button" id="tambah" class="btn btn-info">Tambah</button>
+  <table class="table" id="tblAddRow">
   <thead>
     <tr>
       <th scope="col">Nama Test</th>
@@ -65,13 +65,25 @@
   <tbody>
     <tr>
       <td>
-      <input type="text" class="form-control" id="nama">
+        
+      <input type="text" id='test' name="test[]" class="form-control" >
       </td>
-      <td id="jenis"></td>
-      <td id="bahan"></td>
-      <td id="harga"></td>
+      <td><input class="pemeriksaan" id="jenis" name="jenis[]" type="text" readonly></td>
+      <td><input class="pemeriksaan" id="bahan" name="bahan[]" type="text" readonly></td>
+      <td><input class="pemeriksaan" id="harga" name="" type="text" readonly></td>
+
     </tr>
     
+    <tr>
+      <td>
+        
+      <input type="text" id='test1' name="test[]" class="form-control" >
+      </td>
+      <td><input class="pemeriksaan" id="jenis1" name="jenis[]" type="text" readonly></td>
+      <td><input class="pemeriksaan" id="bahan1" name="bahan[]" type="text" readonly></td>
+      <td><input class="pemeriksaan" id="harga1" name="" type="text" readonly></td>
+
+    </tr>
   </tbody>
 </table>
   </div>
@@ -82,18 +94,34 @@
   </div>
   
 </form>
-
 <script type="text/javascript">
-       
+        
+// Add row the table
+/*$('#test').on('click', function() {
+    var lastRow = $('#tblAddRow tbody tr:last').html();
+    //alert(lastRow);
+    $('#tblAddRow tbody').append('<tr>' + lastRow + '</tr>');
+    
+});*/
+
+// Add row the table
+$('#tambah').on('click', function() {
+    var lastRow = $('#tblAddRow tbody tr:last').html();
+    //alert(lastRow);
+    $('#tblAddRow tbody').append('<tr>' + lastRow + '</tr>');
+});
+
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
-            $( "#nama" ).autocomplete({
+            $( "#test" ).autocomplete({
                 source: function( request, response ) {
                     console.log(request.term)
                 $.ajax({
                     url:"{{route('cari')}}",
-                    type: 'get',
+                    type: 'post',
                     dataType: "json",
                     data: {
+                        _token: CSRF_TOKEN,
                         cari: request.term
                     },
                     success: function( data ) {
@@ -102,6 +130,7 @@
                 });
                 },
                 select: function (event, ui) {
+                $('#test').val(ui.item.label);
                 $('#jenis').val(ui.item.jenis);
                 $('#bahan').val(ui.item.bahan);
                 $('#harga').val(ui.item.harga);
@@ -109,6 +138,35 @@
                 }
             });
         });
+
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function(){
+            $( "#test1" ).autocomplete({
+                source: function( request, response ) {
+                    console.log(request.term)
+                $.ajax({
+                    url:"{{route('cari')}}",
+                    type: 'post',
+                    dataType: "json",
+                    data: {
+                        _token: CSRF_TOKEN,
+                        cari: request.term
+                    },
+                    success: function( data ) {
+                    response( data );
+                    }
+                });
+                },
+                select: function (event, ui) {
+                $('#test1').val(ui.item.label);
+                $('#jenis1').val(ui.item.jenis);
+                $('#bahan1').val(ui.item.bahan);
+                $('#harga1').val(ui.item.harga);
+                return false;
+                }
+            });
+        });
+        
   </script>
   
 @endsection

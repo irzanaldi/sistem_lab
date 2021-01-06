@@ -38,8 +38,8 @@ Route::post('/inputtest', 'MasterTest@store');
 
 //input Pemeriksaan
 
-Route::get('/pemeriksaan', 'MasterPemeriksaan@index');
-Route::get('/cari', 'MasterPemeriksaan@create')->name('cari');
+Route::get('/pemeriksaan', 'MasterPemeriksaan@index')->name('pemeriksaan');
+Route::post('/cari', 'MasterPemeriksaan@create')->name('cari');
 
 Route::get('/tagihan', function () {
     return view('tagihan');

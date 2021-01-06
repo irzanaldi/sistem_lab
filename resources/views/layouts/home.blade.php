@@ -3,12 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('assets/dasboard/js/Chart.js') }}"></script>
 
     <title>@yield('title')</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="{{ asset('assets/dasboard/js/core/jquery.3.2.1.min.js') }} " type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/dasboard/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/dasboard/img/favicon.ico') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -131,8 +134,6 @@
 </body>
 
 
-<script src="{{ asset('assets/dasboard/js/core/jquery.3.2.1.min.js') }} " type="text/javascript"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/dasboard/js/core/popper.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/dasboard/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -147,13 +148,7 @@
 <script src="{{ asset('assets/dasboard/js/light-bootstrap-dashboard.js?v=2.0.0 ') }} " type="text/javascript"></script>
 <script src="{{ asset('assets/dasboard/js/sb-admin-2.js ') }} " type="text/javascript"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
 
-        demo.showNotification();
-
-    });
 
     
 </script>

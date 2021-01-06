@@ -33,14 +33,14 @@ class MasterPemeriksaan extends Controller
         $search = $request->cari;
 
         $data_test = DB::table('data_test')
-        ->join('data_jenis', 'data_jenis.kd_jenis', '=', 'data_test.kd_jenis')
-                            ->select('data_test.nama, data_jenis.nama_jenis','data_test.bahan', 'data_test.harga' )
+                            ->join('data_jenis', 'data_jenis.kd_jenis', '=', 'data_test.kd_jenis')
+                            ->select('data_test.kd_test','data_test.nama_test', 'data_test.harga', 'data_test.bahan', 'data_jenis.nama_jenis')
                             ->limit(5);
 
         $search = !empty($request->cari) ? ($request->cari) : ('');
 
         if($search){
-           $data_test->where('data_test.nama', 'like', '%' .$search . '%');
+           $data_test->where('data_test.nama_test', 'like', '%' .$search . '%');
         }
 
         $data = $data_test->limit(5)->get();
@@ -48,10 +48,11 @@ class MasterPemeriksaan extends Controller
         $response = array();
         foreach($data as $pasien){
            $response[] = array(
-               "nama" => $pasien->nama,
+               "value" => $pasien->kd_test,
+               "label" => $pasien->nama_test,
                "jenis" => $pasien->nama_jenis,
-               "harga" => $pasien->harga,
-               "bahan" => $pasien->bahan
+               "bahan" => $pasien->bahan,
+               "harga" => $pasien->harga
             );
         }
         return response()->json($response);
@@ -67,6 +68,7 @@ class MasterPemeriksaan extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**

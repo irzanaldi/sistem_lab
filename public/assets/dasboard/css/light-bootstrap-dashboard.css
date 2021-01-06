@@ -674,7 +674,15 @@ body>.navbar-collapse[data-color="red"]:after {
     background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
     background-size: 150% 150%;
 }
-
+input.pemeriksaan {
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+   }
+   
 .sidebar[data-color="purple"]:after,
 body>.navbar-collapse[data-color="purple"]:after {
     background: #9368E9;
