@@ -15,10 +15,9 @@ class MasterPemeriksaan extends Controller
      */
     public function index()
     {
-        //
-        $data_test = DB::table('data_test')->get();
+        $instansi = DB::table('data_instansi')->get();
         return view('pemeriksaan')->with([
-            'data_test' => $data_test
+            'instansi' => $instansi
         ]);
     }
 
@@ -30,32 +29,26 @@ class MasterPemeriksaan extends Controller
     public function create(Request $request)
     {
            
-        $search = $request->cari;
-
-        $data_test = DB::table('data_test')
+        $query = $request->get('term','');
+        $countries=\DB::table('data_test')
                             ->join('data_jenis', 'data_jenis.kd_jenis', '=', 'data_test.kd_jenis')
-                            ->select('data_test.kd_test','data_test.nama_test', 'data_test.harga', 'data_test.bahan', 'data_jenis.nama_jenis')
-                            ->limit(5);
-
-        $search = !empty($request->cari) ? ($request->cari) : ('');
-
-        if($search){
-           $data_test->where('data_test.nama_test', 'like', '%' .$search . '%');
+                            ->select('data_test.kd_test','data_test.nama_test', 'data_test.harga' , 'data_test.bahan', 'data_jenis.nama_jenis')
+                            ->limit(6);
+        if($request->type=='test'){
+            $countries->where('nama_test','LIKE','%'.$query.'%');
         }
-
-        $data = $data_test->limit(5)->get();
-  
-        $response = array();
-        foreach($data as $pasien){
-           $response[] = array(
-               "value" => $pasien->kd_test,
-               "label" => $pasien->nama_test,
-               "jenis" => $pasien->nama_jenis,
-               "bahan" => $pasien->bahan,
-               "harga" => $pasien->harga
-            );
+        if($request->type=='jenis'){
+            $countries->where('nama_jenis','LIKE','%'.$query.'%');
         }
-        return response()->json($response);
+           $countries=$countries->get();        
+        $data=array();
+        foreach ($countries as $country) {
+                $data[]=array('nama_test'=>$country->nama_test, 'kd_test'=>$country->kd_test,'nama_jenis'=>$country->nama_jenis,'bahan'=>$country->bahan,'harga'=>$country->harga);
+        }
+        if(count($data))
+             return $data;
+        else
+            return ['nama_test'=>'', 'kd_test'=>'', 'nama_jenis'=>'','bahan'=>'','harga'=>''];
         
     }
 
@@ -68,7 +61,31 @@ class MasterPemeriksaan extends Controller
     public function store(Request $request)
     {
         //
-        
+        $nama = $request->input('namapasien');
+       
+      $ro =  DB::table('data_pasien')->insert([
+            'kd_instansi' => $request->instansi,
+            'nama' => $request->namapasien,
+            'inisial' => $request->inisial,
+            'jenis_kelamin' => $request->jk,
+            'umur' => $request->umur,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->nomer
+        ]); 
+            
+            $kd = DB::table('data_pasien')->select('data_pasien.kd_pasien')->where('nama','=','%'.$nama.'%')->first(); 
+       
+            $kode= $request->input('kode');
+           $count = count($kode);
+            for( $i=0; $i < $count; $i++ )
+            {
+                DB::table('data_pemeriksaan')->insert([
+                    'kd_instansi' => $request->instansi,
+                    'nama' => $request->namapasien,
+                    'kd_test' => $request->kode[$i]
+                ]);
+            }
+            return redirect('/pemeriksaan')->with(['success' => 'Berhasil Tersimpan']);; 
     }
 
     /**

@@ -39,11 +39,14 @@ Route::post('/inputtest', 'MasterTest@store');
 //input Pemeriksaan
 
 Route::get('/pemeriksaan', 'MasterPemeriksaan@index')->name('pemeriksaan');
-Route::post('/cari', 'MasterPemeriksaan@create')->name('cari');
+Route::get('searchajax', ['as'=>'searchajax','uses'=>'MasterPemeriksaan@create']);
+Route::post('/inputpemeriksaan', 'MasterPemeriksaan@store');
 
-Route::get('/tagihan', function () {
-    return view('tagihan');
-});
+
+//input tagihan
+Route::get('/tagihan', 'MasterTagihan@index');
+Route::get('/filter', 'MasterTagihan@create')->name('order');
+Route::get('/report/{daterange}', 'MasterTagihan@store')->name('report');
 
 Route::get('/laporan', function () {
     return view('laporan');

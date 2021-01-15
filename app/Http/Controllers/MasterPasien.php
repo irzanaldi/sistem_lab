@@ -56,7 +56,7 @@ class MasterPasien extends Controller
             'no_telp' => $request->nomer
         ]);
 
-        return redirect('/pasien')->with(['success' => 'Berhasil Tersimpan']);;
+        return redirect('/pasien')->with(['success' => 'Berhasil Tersimpan']);
     }
 
     /**
