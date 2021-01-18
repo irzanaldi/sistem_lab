@@ -17,8 +17,8 @@
           <input type="text" id="caripasien" class="fadeIn second" name="caripasien" placeholder="Masukkan nama pasien">  
           <input type="submit" class="fadeIn fourth" value="Cari" href="/form/pasien"> 
         </form>
+    <a class="btn btn-primary mt-2" role="button" data-bs-toggle="button" style="color:white;" href="{{ url('/formtest') }}">input</a>
 
-    <a href="{{ url('/formtest') }}">input</a>
 
     <table class="table">
   <thead>
@@ -34,7 +34,7 @@
   @foreach($data_test as $psn)
     <tr>
       <td>{{$loop->iteration}}</td>
-      <td>{{$psn->nama}}</td>
+      <td>{{$psn->nama_test}}</td>
       <td>{{$psn->harga}}</td>
       <td>{{$psn->bahan}}</td>
       <td>{{$psn->nama_jenis}}</td>

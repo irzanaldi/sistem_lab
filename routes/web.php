@@ -46,11 +46,12 @@ Route::post('/inputpemeriksaan', 'MasterPemeriksaan@store');
 //input tagihan
 Route::get('/tagihan', 'MasterTagihan@index');
 Route::get('/filter', 'MasterTagihan@create')->name('order');
-Route::get('/report/{daterange}', 'MasterTagihan@store')->name('report');
+Route::get('/report/{instansi}{daterange}', 'MasterTagihan@store')->name('report');
 
-Route::get('/laporan', function () {
-    return view('laporan');
-});
+
+
+//input laporan
+Route::get('/laporan', 'MasterLaporan@index');
 
 
 /*

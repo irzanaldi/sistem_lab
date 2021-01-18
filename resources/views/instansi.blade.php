@@ -16,7 +16,7 @@
           <input type="submit" class="fadeIn fourth" value="Cari"> 
         </form>
 
-        <a href="{{ url('/forminstansi') }}">input</a>
+        <a class="btn btn-primary mt-2" role="button" data-bs-toggle="button" style="color:white;" href="{{ url('/forminstansi') }}">input</a>
 
         <table class="table">
   <thead>

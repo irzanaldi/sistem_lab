@@ -37,9 +37,10 @@ class MasterTagihan extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {    $instansi = DB::table('data_instansi')->get();
         
+        $instansis = $request->input('instansi');
         //INISIASI 30 HARI RANGE SAAT INI JIKA HALAMAN PERTAMA KALI DI-LOAD
         //KITA GUNAKAN STARTOFMONTH UNTUK MENGAMBIL TANGGAL 1
         $start = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
@@ -58,7 +59,9 @@ class MasterTagihan extends Controller
         $pemeriksaan = DB::table('data_pemeriksaan')
         ->join('data_test', 'data_test.kd_test', '=', 'data_pemeriksaan.kd_test')
         ->join('data_instansi', 'data_instansi.kd_instansi', '=', 'data_pemeriksaan.kd_instansi')
-        ->select('data_test.nama_test','data_test.harga', 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')->whereBetween('tanggal', [$start, $end])->get();
+        ->select('data_test.nama_test','data_test.harga', 'data_instansi.kd_instansi', 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')
+        ->where('data_instansi.kd_instansi', '=' , $instansis)
+        ->whereBetween('tanggal', [$start, $end])->get();
         //KEMUDIAN LOAD VIEW
         return view('tagihan')->with( compact('pemeriksaan'))->with(['instansi' => $instansi]);
         
@@ -73,7 +76,7 @@ class MasterTagihan extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($daterange)
+    public function store($daterange, $instansi)
     {
         //
         $date = explode('+', $daterange);
@@ -85,6 +88,7 @@ class MasterTagihan extends Controller
         ->join('data_test', 'data_test.kd_test', '=', 'data_pemeriksaan.kd_test')
         ->join('data_instansi', 'data_instansi.kd_instansi', '=', 'data_pemeriksaan.kd_instansi')
         ->select('data_test.nama_test','data_test.harga', 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')
+        ->where('data_instansi.kd_instansi', '=' , $instansi)
         ->whereBetween('tanggal', [$start, $end])->get();
   
 
