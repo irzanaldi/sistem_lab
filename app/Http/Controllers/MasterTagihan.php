@@ -19,13 +19,12 @@ class MasterTagihan extends Controller
     public function index()
     {
         //
-        
         $instansi = DB::table('data_instansi')->get();
         $pemeriksaan = DB::table('data_pemeriksaan')
                         ->join('data_test', 'data_test.kd_test', '=', 'data_pemeriksaan.kd_test')
                         ->join('data_instansi', 'data_instansi.kd_instansi', '=', 'data_pemeriksaan.kd_instansi')
                         ->select('data_test.nama_test','data_test.harga', 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')
-                        ->get();
+                        ->paginate(15);
         return view('tagihan')->with([
             'instansi' => $instansi,
             'pemeriksaan' => $pemeriksaan

@@ -3,7 +3,11 @@
 @section('tittle', 'Master Laporan')
 
 @section('content')
-
+@if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block">
+          <strong>{{ $message }}</strong>
+      </div>
+@endif
     <h1>Laporan</h1>
 <form action="" method = "POST">
  <div class="row">
@@ -11,39 +15,60 @@
     <label for="inputAddress" class="form-label">Bulan</label>
     <input type="text" id="created_at" name="date" class="form-control">
   </div>
-        <button type="submit" class="btn btn-danger mr-3"><a href="{{ url('/inputlaporan') }}" style="color:inherit; text-decoration: none;">Masukkan Pengeluaran</a></button>
         <button type="submit" class="btn btn-primary">Cetak</button>
-  </div>
-  
 </form>
+      
+     
+        <a class="btn btn-danger ml-2 center-block" href="{{ url('/formlaporan') }}" style="padding: 22px 16px; color:white; text-decoration: none;">Masukkan Pengeluaran</a>
+      
+    
+    </div>
+<button class="button" id="btnpemasukkan">Pemasukkan</button>
+<button class="button" id="btnpengeluaran">Pengeluaran</button>
 
-    <table class="table mt-5">
+
+<table class="table p1" id="pemasukkan">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">No</th>
+      <th scope="col">Pemasukkan</th>
+      <th scope="col">harga</th>
+      <th scope="col">tanggal</th>
     </tr>
   </thead>
   <tbody>
+  @foreach($pemasukkan as $pan)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{$loop->iteration}}</td>
+      <td>{{$pan->nama_instansi}}</td>
+      <td>Rp. {{$pan->total}}</td>
+      <td>{{$pan->tanggal}}</td>
     </tr>
+  @endforeach
+  </tbody>
+</table>
+
+
+
+<table class="table d-none p2" id="pengeluaran" >
+  <thead>
     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+      <th scope="col">No</th>
+      <th scope="col">Pengeluaran</th>
+      <th scope="col">harga</th>
+      <th scope="col">Tanggal</th>
+      
     </tr>
+  </thead>
+  <tbody>
+  @foreach($pengeluaran as $psn)
     <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>{{$loop->iteration}}</td>
+      <td>{{$psn->pengeluaran}}</td>
+      <td>Rp. {{$psn->harga}}</td>
+      <td>{{$psn->tanggal}}</td>
     </tr>
+    @endforeach
   </tbody>
 </table>
 
@@ -71,4 +96,24 @@
                 $('#exportpdf').attr('href', '{{ url("/report") }}/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
             })
         })
+
+
+        $(document).ready(function(){
+	        	$('#btnpemasukkan').click(function(){
+		      	$('.p2').addClass('d-none');
+			      $('.p1').removeClass('d-none');
+		});	
+ 
+	    $('#btnpengeluaran').click(function(){
+            $('.p1').addClass('d-none');
+			      $('.p2').removeClass('d-none');
+	      	});		
+	});
+
+          
+
+
+
     </script>
+
+    

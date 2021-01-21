@@ -17,7 +17,7 @@ class MasterPasien extends Controller
     {
         $pasien=DB::table('data_pasien')
         ->join('data_instansi', 'data_pasien.kd_instansi', '=', 'data_instansi.kd_instansi')
-        ->get();
+        ->paginate(15);
         return view ('pasien', ['data_pasien' => $pasien]);
     }
 

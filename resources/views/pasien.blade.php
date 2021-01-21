@@ -46,5 +46,5 @@
     @endforeach
   </tbody>
 </table>
-
+{{ $data_pasien->links() }}
 @endsection

@@ -2,16 +2,17 @@
 @section ('tittle', 'Dasboard')
 @section ('navbar', 'Dasboard')
 @section('content')
+
+<h1>Selamat Datang,,,</h1>
 <div  class="row">
     <div class="col-md-6">
       <div class="card ">
          <div class="card-header ">
-              <h4 class="card-title">2017 Sales</h4>
-                <p class="card-category">All products including Taxes</p>
+              <h4 class="card-title">Pemeriksaan</h4>
     
                
                 <div class="card-body ">
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <canvas id="myChart" width="600" height="500"></canvas>
                 </div>
 
 

@@ -28,6 +28,7 @@
       <th scope="col">Harga</th>
       <th scope="col">Bahan</th>
       <th scope="col">Jenis</th>
+      <th scope="col">Opsi</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,8 @@
       <td>{{$psn->harga}}</td>
       <td>{{$psn->bahan}}</td>
       <td>{{$psn->nama_jenis}}</td>
+      <td><a href="#" class="btn btn-primary btn-flat btn-xs" ><i class="fa fa-pencil"></i> Edit</a>
+        <a href="#" class="btn btn-danger btn-flat btn-xs" ><i class="fa fa-trash"></i> Delete</a></td>
     </tr>
     @endforeach
   </tbody>

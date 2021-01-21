@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class MasterLaporan extends Controller
 {
     /**
@@ -14,7 +16,23 @@ class MasterLaporan extends Controller
     public function index()
     {
         //
-        return view('laporan');
+        $pemasukkan = DB::table('data_pemeriksaan')
+        ->Join('data_instansi','data_pemeriksaan.kd_instansi','=','data_instansi.kd_instansi')
+        ->Join('data_test','data_pemeriksaan.kd_test','=','data_test.kd_test')
+        ->select('nama_instansi',DB::raw('sum(harga) AS total'),'tanggal')
+        ->groupBy('nama_instansi')
+        ->paginate(15);
+       
+                        
+
+        $pengeluaran = DB::table('data_keuangan')->paginate(15);
+
+        return view('laporan')->with([
+            'pemasukkan' => $pemasukkan,
+            'pengeluaran' => $pengeluaran
+        ]); 
+
+        
     }
 
     /**
@@ -25,6 +43,7 @@ class MasterLaporan extends Controller
     public function create()
     {
         //
+        return view('form/laporan'); 
     }
 
     /**
@@ -36,6 +55,16 @@ class MasterLaporan extends Controller
     public function store(Request $request)
     {
         //
+        $pengeluaran= $request->input('pengeluaran');
+           $count = count($pengeluaran);
+            for( $i=0; $i < $count; $i++ )
+            {
+                DB::table('data_keuangan')->insert([
+                    'pengeluaran' => $request->pengeluaran[$i],
+                    'harga' => $request->harga[$i]
+                ]);
+            }
+            return redirect('/laporan')->with(['success' => 'Berhasil Tersimpan']);; 
     }
 
     /**

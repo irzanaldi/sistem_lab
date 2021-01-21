@@ -682,7 +682,27 @@ input.pemeriksaan {
     display: block;
     width: 100%;
    }
-   
+   .button {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+
+/*   #pemasukkan {
+    display: block;
+    width: 500px;
+
+}   
+#pengeluaran {
+    display: none;
+}    */ 
 .sidebar[data-color="purple"]:after,
 body>.navbar-collapse[data-color="purple"]:after {
     background: #9368E9;

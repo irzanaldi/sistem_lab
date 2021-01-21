@@ -52,6 +52,8 @@ Route::get('/report/{instansi}{daterange}', 'MasterTagihan@store')->name('report
 
 //input laporan
 Route::get('/laporan', 'MasterLaporan@index');
+Route::get('/formlaporan', 'MasterLaporan@create');
+Route::post('/inputlaporan', 'MasterLaporan@store');
 
 
 /*

@@ -10,6 +10,7 @@
         <div class="col-md-3">
   <label for="inputAddress" class="form-label">Instansi</label>
   <select class="form-select form-control"  name="instansi" id="instansi">
+  <option selected>Instansi</option>
     @foreach($instansi as $ins)
         <option value='{{$ins->kd_instansi}}'>{{$ins->nama_instansi}}</option>
     @endforeach
