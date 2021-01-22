@@ -19,7 +19,7 @@
     <input type="text" class="form-control" name="bahan">
   </div>
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Kode Instansi</label>
+    <label for="inputPassword4" class="form-label">Jenis Test</label>
     <select class="form-select form-control" aria-label="Default select example" name="jenis" id="jenis">
         <option selected>Jenis Test</option>
     @foreach($jenistest as $ins)

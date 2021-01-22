@@ -6,7 +6,7 @@
       <div class="alert alert-success alert-block">
           <strong>{{ $message }}</strong>
       </div>
-@endif
+ @endif
 <h1>Form Input Pemeriksaan</h1>
 
 <form action="{{ url('/inputpemeriksaan') }}" method="POST">
@@ -15,15 +15,21 @@
   <div class="col-md-3">
    <label for="inputAddress" class="form-label">Nama Pasien</label>
     <input type="text" class="form-control" id="namapasien" name="namapasien">
+    @if ($errors->has('namapasien'))
+       <span class="text-danger">{{ $errors->first('namapasien') }}</span>
+    @endif
   </div>
   <div class="col-3">
   <label for="inputPassword4" class="form-label">Nama Instansi</label>
     <select class="form-select form-control" aria-label="Default select example" name="instansi" id="instansi">
-        <option selected>Instansi</option>
+        <option>Instansi</option>
     @foreach($instansi as $ins)
         <option value=" {{ $ins->kd_instansi }} ">({{ $ins->kd_instansi }}) {{ $ins->nama_instansi }}</option>
     @endforeach
     </select>
+    @if ($errors->has('instansi'))
+       <span class="text-danger">{{ $errors->first('instansi') }}</span>
+    @endif
   </div>
   <div class="col-3">
   <label for="inputAddress" class="form-label">Inisial</label>
@@ -53,6 +59,9 @@
   <div class="col-md-2">
   <label for="inputZip" class="form-label">Nomer Telpon</label>
     <input type="text" class="form-control" id="nomer" name="nomer">
+    @if ($errors->has('nomer'))
+       <span class="text-danger">{{ $errors->first('nomer') }}</span>
+    @endif
   </div>
 </div>
 

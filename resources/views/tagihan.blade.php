@@ -5,6 +5,7 @@
 @section('content')
 
 <h1>Tagihan</h1>
+
 <form action="{{ route('order')}}" method = "get">
         <div class="row">
         <div class="col-md-3">

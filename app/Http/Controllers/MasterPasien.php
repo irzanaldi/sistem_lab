@@ -40,11 +40,20 @@ class MasterPasien extends Controller
      */
     public function store(Request $request)
     {
-        /*DB::table(data_pasien)->insert([
-            'kd_instansi'=> $request => kd_instansi,
-            'pegawai_nama' => $request->nama,
+        $request->validate([
+            'namapasien' => 'required',
+            'nomer' => 'required|numeric',
+            'umur' => 'required|numeric'
+        ],[
+ 
+            'namapasien.required' => 'Nama pasien kosong !',
+            'umur.numeric' => 'Harus berupa angka !',
+            'umur.required' => 'Umur kosong !!',
+            'nomer.numeric' => 'Harus berupa angka !',
+            'nomer.required' => 'nomer kosong !!'
+            
 
-        ]);*/
+        ]);
 
         DB::table('data_pasien')->insert([
             'kd_instansi' => $request->instansi,

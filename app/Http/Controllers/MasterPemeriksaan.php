@@ -61,6 +61,16 @@ class MasterPemeriksaan extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'namapasien' => 'required',
+            'nomer' => 'required|numeric',
+            'instansi' => 'required'
+        ],[
+ 
+            'namapasien.required' => 'Name is required'
+            
+
+        ]);
         $nama = $request->input('namapasien');
        
       $ro =  DB::table('data_pasien')->insert([
@@ -85,7 +95,9 @@ class MasterPemeriksaan extends Controller
                     'kd_test' => $request->kode[$i]
                 ]);
             }
-            return redirect('/pemeriksaan')->with(['success' => 'Berhasil Tersimpan']);; 
+            return redirect('/pemeriksaan')->with([
+                'success' => 'Berhasil Tersimpan'
+                ]);; 
     }
 
     /**
