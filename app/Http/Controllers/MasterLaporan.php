@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use PDF;
 
-class MasterLaporan extends Controller
+class MasterLaporan extends Controller 
 {
     /**
      * Display a listing of the resource.
@@ -73,9 +75,28 @@ class MasterLaporan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($daterange)
     {
         //
+        $date = explode('+', $daterange);
+
+        $start = Carbon::parse($date[0])->format('Y-m-d') . ' 00:00:01';
+        $end = Carbon::parse($date[1])->format('Y-m-d') . ' 23:59:59';
+
+        $pemasukkan = DB::table('data_pemeriksaan')
+        ->Join('data_instansi','data_pemeriksaan.kd_instansi','=','data_instansi.kd_instansi')
+        ->Join('data_test','data_pemeriksaan.kd_test','=','data_test.kd_test')
+        ->select(DB::raw('sum(harga) AS total'))
+        ->whereBetween('tanggal', [$start, $end])->first();
+  
+        $pengeluaran = DB::table('data_keuangan')
+        ->select(DB::raw('sum(harga) AS totalpengeluaran'))
+        ->whereBetween('tanggal', [$start, $end])->first();
+
+        $pdf = PDF::loadview('keuangan', compact('pemasukkan','pengeluaran', 'date'));
+
+        return $pdf->stream();
+
     }
 
     /**

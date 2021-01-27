@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-3">
    <label for="inputAddress" class="form-label">Nama Pasien</label>
-    <input type="text" class="form-control" id="namapasien" name="namapasien">
+    <input type="text" class="form-control" id="namapasien" name="namapasien" autocomplete="off">
     @if ($errors->has('namapasien'))
        <span class="text-danger">{{ $errors->first('namapasien') }}</span>
     @endif
@@ -50,15 +50,15 @@
   </div>
   <div class="col-3">
   <label for="inputAddress2" class="form-label">Alamat</label>
-    <input type="text" class="form-control" id="alamat" name="alamat">
+    <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off">
   </div>
   <div class="col-3">
   <label for="inputCity" class="form-label">Umur</label>
-    <input type="text" class="form-control" id="umur" name="umur">
+    <input type="text" class="form-control" id="umur" name="umur" autocomplete="off">
   </div>
   <div class="col-md-2">
   <label for="inputZip" class="form-label">Nomer Telpon</label>
-    <input type="text" class="form-control" id="nomer" name="nomer">
+    <input type="text" class="form-control" id="nomer" name="nomer" autocomplete="off">
     @if ($errors->has('nomer'))
        <span class="text-danger">{{ $errors->first('nomer') }}</span>
     @endif

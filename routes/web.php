@@ -54,6 +54,7 @@ Route::get('/report/{instansi}{daterange}', 'MasterTagihan@store')->name('report
 Route::get('/laporan', 'MasterLaporan@index');
 Route::get('/formlaporan', 'MasterLaporan@create');
 Route::post('/inputlaporan', 'MasterLaporan@store');
+Route::get('/keuangan/{daterange}', 'MasterLaporan@show')->name('keuangan');
 
 
 /*

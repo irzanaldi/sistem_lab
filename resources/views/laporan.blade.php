@@ -15,11 +15,13 @@
     <label for="inputAddress" class="form-label">Bulan</label>
     <input type="text" id="created_at" name="date" class="form-control">
   </div>
-        <button type="submit" class="btn btn-primary">Cetak</button>
 </form>
+<a class="btn btn-primary" role="button" data-bs-toggle="button" style="padding: 22px 16px; color:white; text-decoration: none;"
+ target="_blank" id="exportpdf">Export PDF</a>
       
      
-        <a class="btn btn-danger ml-2 center-block" href="{{ url('/formlaporan') }}" style="padding: 22px 16px; color:white; text-decoration: none;">Masukkan Pengeluaran</a>
+        <a class="btn btn-danger ml-2 center-block" href="{{ url('/formlaporan') }}" 
+        style="padding: 22px 16px; color:white; text-decoration: none;">Masukkan Pengeluaran</a>
       
     
     </div>
@@ -66,7 +68,7 @@
       <td>{{$loop->iteration}}</td>
       <td>{{$psn->pengeluaran}}</td>
       <td>Rp. {{$psn->harga}}</td>
-      <td>{{$psn->tanggal}}</td>
+      <td>{{$psn->tanggal}}</td> 
     </tr>
     @endforeach
   </tbody>
@@ -85,7 +87,7 @@
             let end = moment().endOf('month')
 
             //KEMUDIAN TOMBOL EXPORT PDF DI-SET URLNYA BERDASARKAN TGL TERSEBUT
-            $('#exportpdf').attr('href', '{{ url("/report") }}/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
+            $('#exportpdf').attr('href', '{{ url("/keuangan") }}/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
 
             //INISIASI DATERANGEPICKER
             $('#created_at').daterangepicker({
@@ -93,7 +95,7 @@
                 endDate: end
             }, function(first, last) {
                 //JIKA USER MENGUBAH VALUE, MANIPULASI LINK DARI EXPORT PDF
-                $('#exportpdf').attr('href', '{{ url("/report") }}/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
+                $('#exportpdf').attr('href', '{{ url("/keuangan") }}/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
             })
         })
 
