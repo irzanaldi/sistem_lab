@@ -48,5 +48,5 @@
     @endforeach
   </tbody>
 </table>
-
+{{ $data_instansi->links() }}
 @endsection

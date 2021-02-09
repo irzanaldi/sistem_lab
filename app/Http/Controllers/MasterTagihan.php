@@ -58,11 +58,15 @@ class MasterTagihan extends Controller
         $pemeriksaan = DB::table('data_pemeriksaan')
         ->join('data_test', 'data_test.kd_test', '=', 'data_pemeriksaan.kd_test')
         ->join('data_instansi', 'data_instansi.kd_instansi', '=', 'data_pemeriksaan.kd_instansi')
-        ->select('data_test.nama_test','data_test.harga', 'data_instansi.kd_instansi', 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')
+        ->select('data_test.nama_test','data_test.harga', 'data_instansi.kd_instansi', 'data_instansi.nama_instansi','data_pemeriksaan.nama',
+        'data_pemeriksaan.tanggal')
         ->where('data_instansi.kd_instansi', '=' , $instansis)
         ->whereBetween('tanggal', [$start, $end])->get();
         //KEMUDIAN LOAD VIEW
-        return view('tagihan')->with( compact('pemeriksaan'))->with(['instansi' => $instansi]);
+        return view('tagihan')->with([
+            'instansi' => $instansi,
+            'pemeriksaan' => $pemeriksaan
+        ]);
         
         
     
@@ -86,12 +90,18 @@ class MasterTagihan extends Controller
         $pemeriksaan = DB::table('data_pemeriksaan')
         ->join('data_test', 'data_test.kd_test', '=', 'data_pemeriksaan.kd_test')
         ->join('data_instansi', 'data_instansi.kd_instansi', '=', 'data_pemeriksaan.kd_instansi')
+        ->select('data_test.nama_test',DB::raw('sum(harga) AS total'), 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')
+        ->where('data_instansi.kd_instansi', '=' , $instansi)
+        ->whereBetween('tanggal', [$start, $end])->first();
+
+        $tabel = DB::table('data_pemeriksaan')
+        ->join('data_test', 'data_test.kd_test', '=', 'data_pemeriksaan.kd_test')
+        ->join('data_instansi', 'data_instansi.kd_instansi', '=', 'data_pemeriksaan.kd_instansi')
         ->select('data_test.nama_test','data_test.harga', 'data_instansi.nama_instansi','data_pemeriksaan.nama','data_pemeriksaan.tanggal')
         ->where('data_instansi.kd_instansi', '=' , $instansi)
         ->whereBetween('tanggal', [$start, $end])->get();
-  
 
-        $pdf = PDF::loadview('report', compact('pemeriksaan', 'date'));
+        $pdf = PDF::loadview('report', compact('pemeriksaan','tabel', 'date'));
 
         return $pdf->stream();
 

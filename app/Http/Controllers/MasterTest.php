@@ -18,7 +18,7 @@ class MasterTest extends Controller
         //
         $test=DB::table('data_test')
         ->join('data_jenis', 'data_test.kd_jenis', '=', 'data_jenis.kd_jenis')
-        ->get();
+        ->paginate(15);
         return view ('test', ['data_test' => $test]);
     }
 
@@ -44,7 +44,7 @@ class MasterTest extends Controller
     {
         //
         DB::table('data_test')->insert([
-            'nama' => $request->namatest,
+            'nama_test' => $request->namatest,
             'harga' => $request->harga,
             'bahan' => $request->bahan,
             'kd_jenis' => $request->jenis
@@ -73,6 +73,12 @@ class MasterTest extends Controller
     public function edit($id)
     {
         //
+        $test=DB::table('data_test')
+        ->join('data_jenis', 'data_test.kd_jenis', '=', 'data_jenis.kd_jenis')
+        ->where('data_test.kd_test', "=", $id)
+        ->get();
+        $jenistest = DB::table('data_jenis')->get();
+        return view ('form/edit/edit_test', ['data_test' => $test, 'jenistest' =>$jenistest ]);
     }
 
     /**
@@ -82,9 +88,17 @@ class MasterTest extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        DB::table('data_test')->where('data_test.kd_test', "=", $request->id)->update([
+            'nama_test' => $request->namatest,
+            'harga' => $request->harga,
+            'bahan' => $request->bahan,
+            'kd_jenis' => $request->jenis
+        ]);
+
+        return redirect('/test')->with(['success' => 'Berhasil Diubah']);
     }
 
     /**
@@ -96,5 +110,7 @@ class MasterTest extends Controller
     public function destroy($id)
     {
         //
+        DB::table('data_test')->where('data_test.kd_test', '=', $id)->delete();
+        return redirect('/test')->with(['success' => 'Berhasil Dihapus']);;
     }
 }

@@ -1,31 +1,12 @@
-<!-- <html>
-<head>
-	<title>Membuat Laporan PDF Dengan DOMPDF Laravel</title>
-</head>
-<body>
-	<style type="text/css">
-		table tr td,
-		table tr th{
-			font-size: 9pt;
-		}
-	</style>
-	<center>
-		<h5>Membuat Tagihan Keuangan</h4>
-		<h6><a target="_blank">TEST</a></h5>
-	</center>
- 
-        <h1>Total Pemasukkan : {{$pemasukkan->total}}</h1>
-        <h1>Total pengeluaran : {{$pengeluaran->totalpengeluaran}}</h1>
-        <h1>Total Keuntungan : {{$pemasukkan->total - $pengeluaran->totalpengeluaran}}</h1>
- 
-</body>
-</html> -->
-
 
 <html>
 <head>
 <title>Undanagan orang tua</title>
 <style type="text/css">
+@page {
+  size: A4;
+  margin: 3cm 2cm 1cm 1cm;
+}
  body{
       margin: 3cm 1cm 1cm 1cm;
       font-size: 14px;
@@ -54,7 +35,7 @@ p{
 <tr>         
         <td ><span >No</span></td>         
         <td ><span >:</span></td>         
-        <td ><span >005/ smk-if/ yps/ IV/ 2011</span></td>       
+        <td ><span ></span></td>       
 </tr>
 
 
@@ -67,7 +48,7 @@ p{
 <tr>         
         <td><span >Perihal</span></td>         
         <td><span >:</span></td>         
-        <td><span >Rapat orangtua siswa</span></td>       
+        <td><span >Laporan Keuangan</span></td>       
 </tr>
 
 
@@ -89,7 +70,7 @@ p{
 
 
 <tr>        
-        <td><span >orangtua/wali siswa</span></td>                   
+        <td><span >Dr. Siswanto Darmadi</span></td>                   
 </tr>
 
 <tr>        
@@ -99,8 +80,8 @@ p{
 </table>
 
 <div>
-        <p><dd>Sehubung dengan Sehubung denganSehubung denganSehubung dengan Sehubung  dengan Sehubung </dd></p>denganSehubungdenganSehubung dengan Sehubung dengan Sehubung 
-        g denganSehubung denganSehubung denganSehubung denganSehubung dengan</p>
+        <p>Dengan hormat, bersama dengan ini kami sampaikan laporan keuangan bulanan lab kedungdoro cabang bsd city untuk periode
+        bulan ini dengan rincian sebagai berikut :</p>
 </div>
 
 <div style="text-align: center;margin-top:20px;margin-bottom:20px;">
@@ -109,7 +90,7 @@ p{
 
 
 <tr>    
-<td colspan="2"><table border="0" cellpadding="1" style="margin-left:auto;margin-right:auto">
+<td colspan="2"><table border="0" cellpadding="1" style="margin-left:auto;margin-right:auto"></table>
 
 
 <tr>         
@@ -136,15 +117,16 @@ p{
 </table>
 </div> 
 
-<div>
-        <p><dd>Dengan demikian laporan keuangan yang telah dibuat sehingga bisa memberikan bla bla bla bla bla</dd></p>denganSehubungdenganSehubung dengan Sehubung dengan Sehubung 
-        g denganSehubung denganSehubung denganSehubung denganSehubung dengan</p>
+
+
+<div >
+        <p>Demikian laporan ini kami sampaikan, atas perhatiannya dan kerjasamanya kami ucapkan terima kasih.</p>
 </div>
 
 <div style="float:right;margin-top:150;">
        <p>Dengan Hormat,</p>  
        <p>Kepala Lab Cabang BSD City</p> <br><br><br><br><br>
-       <p>(Nama Siapa ini)</p> 
+       <p>(Saras Asri)</p> 
 
 </div>
 

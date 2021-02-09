@@ -9,12 +9,13 @@
       </div>
 @endif
     <h1>Laporan</h1>
-<form action="" method = "POST">
+<form action="{{ route('filterlaporan') }}" method = "get">
  <div class="row">
   <div class="col-md-3">
     <label for="inputAddress" class="form-label">Bulan</label>
     <input type="text" id="created_at" name="date" class="form-control">
   </div>
+  <button class="btn btn-primary" id="filter" style="margin-right:10px;">Filter</button>
 </form>
 <a class="btn btn-primary" role="button" data-bs-toggle="button" style="padding: 22px 16px; color:white; text-decoration: none;"
  target="_blank" id="exportpdf">Export PDF</a>

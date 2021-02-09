@@ -2,28 +2,30 @@
 @section ('tittle', 'Test')
 @section('content')
 <h1>Form Input Test</h1>
-<form action="{{ url('/inputtest') }}" method="POST">
+@foreach($data_test as $test)
+<form action="{{ url('/update') }}" method="POST">
 {{ csrf_field() }}
+<input type="hidden" name="id" value="{{ $test->kd_test }}"> <br/>
  <div class="row mb-3 ">
  </div>   
   <div class="col-6">
     <label for="inputAddress" class="form-label">Nama Test</label>
-    <input type="text" class="form-control" name="namatest">
+    <input type="text" class="form-control" name="namatest" value="{{ $test->nama_test }}">
   </div>
   <div class="col-6">
     <label for="inputAddress" class="form-label">Harga</label>
-    <input type="text" class="form-control" name="harga">
+    <input type="text" class="form-control" name="harga" value="{{ $test->harga }}">
   </div>
   <div class="col-6">
     <label for="inputAddress2" class="form-label">Bahan</label>
-    <input type="text" class="form-control" name="bahan">
+    <input type="text" class="form-control" name="bahan" value="{{ $test->bahan }}">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Jenis Test</label>
     <select class="form-select form-control" aria-label="Default select example" name="jenis" id="jenis">
         <option selected>Jenis Test</option>
     @foreach($jenistest as $ins)
-        <option value=" {{ $ins->kd_jenis }} "> {{ $ins->nama_jenis }} </option>
+        <option value=" {{ $ins->kd_jenis }}" {{ $ins->kd_jenis == $test->kd_jenis ? 'selected' : '' }}> {{ $ins->nama_jenis }} </option>
     @endforeach
     </select>
   </div>
@@ -34,4 +36,5 @@
   
   
 </form>
+@endforeach
 @endsection

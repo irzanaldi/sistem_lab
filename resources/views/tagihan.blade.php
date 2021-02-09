@@ -6,7 +6,7 @@
 
 <h1>Tagihan</h1>
 
-<form action="{{ route('order')}}" method = "get">
+<form action="{{ route('filter') }}" method = "get">
         <div class="row">
         <div class="col-md-3">
   <label for="inputAddress" class="form-label">Instansi</label>
@@ -22,7 +22,7 @@
   <input type="text" id="created_at" name="date" class="form-control">
   </div>
         <button class="btn btn-primary" id="filter">Filter</button>
-        </div>
+  </div>
   
    </form>
         <a class="btn btn-primary" role="button" data-bs-toggle="button" style="color:white;" target="_blank" id="exportpdf">Export PDF</a>

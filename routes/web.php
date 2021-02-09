@@ -35,6 +35,9 @@ Route::post('/inputinstansi', 'MasterInstansi@store');
 Route::get('/test', 'MasterTest@index');
 Route::get('/formtest', 'MasterTest@create');
 Route::post('/inputtest', 'MasterTest@store');
+Route::get('/edit/{id}', 'MasterTest@edit');
+Route::post('/update', 'MasterTest@update');
+Route::get('/hapus/{id}', 'MasterTest@destroy');
 
 //input Pemeriksaan
 
@@ -45,7 +48,7 @@ Route::post('/inputpemeriksaan', 'MasterPemeriksaan@store');
 
 //input tagihan
 Route::get('/tagihan', 'MasterTagihan@index');
-Route::get('/filter', 'MasterTagihan@create')->name('order');
+Route::get('/filter', 'MasterTagihan@create')->name('filter');
 Route::get('/report/{instansi}{daterange}', 'MasterTagihan@store')->name('report');
 
 
@@ -55,6 +58,7 @@ Route::get('/laporan', 'MasterLaporan@index');
 Route::get('/formlaporan', 'MasterLaporan@create');
 Route::post('/inputlaporan', 'MasterLaporan@store');
 Route::get('/keuangan/{daterange}', 'MasterLaporan@show')->name('keuangan');
+Route::get('/filterkeuangan', 'MasterLaporan@filter')->name('filterlaporan');
 
 
 /*

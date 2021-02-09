@@ -105,9 +105,37 @@ class MasterLaporan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function filter(Request $request)
     {
         //
+        $start = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
+        //DAN ENDOFMONTH UNTUK MENGAMBIL TANGGAL TERAKHIR DIBULAN YANG BERLAKU SAAT INI
+        $end = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+    
+        //JIKA USER MELAKUKAN FILTER MANUAL, MAKA PARAMETER DATE AKAN TERISI
+        if (request()->date != '') {
+            //MAKA FORMATTING TANGGALNYA BERDASARKAN FILTER USER
+            $date = explode(' - ' ,request()->date);
+            $start = Carbon::parse($date[0])->format('Y-m-d') . ' 00:00:01';
+            $end = Carbon::parse($date[1])->format('Y-m-d') . ' 23:59:59';
+        }
+
+          $pemasukkan = DB::table('data_pemeriksaan')
+        ->Join('data_instansi','data_pemeriksaan.kd_instansi','=','data_instansi.kd_instansi')
+        ->Join('data_test','data_pemeriksaan.kd_test','=','data_test.kd_test')
+        ->select('nama_instansi',DB::raw('sum(harga) AS total'),'tanggal')
+        ->groupBy('nama_instansi')
+        ->whereBetween('tanggal', [$start, $end])->get();
+       
+                        
+
+        $pengeluaran = DB::table('data_keuangan')->whereBetween('tanggal', [$start, $end])->get();
+
+        return view('laporan')->with([
+            'pemasukkan' => $pemasukkan,
+            'pengeluaran' => $pengeluaran
+        ]);
+
     }
 
     /**

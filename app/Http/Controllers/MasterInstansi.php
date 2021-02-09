@@ -16,7 +16,7 @@ class MasterInstansi extends Controller
     public function index()
     {
         //
-        $instansi=DB::table('data_instansi')->get();
+        $instansi=DB::table('data_instansi')->paginate(15);
         return view ('instansi', ['data_instansi' => $instansi]);
     }
 

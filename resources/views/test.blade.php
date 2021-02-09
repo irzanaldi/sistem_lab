@@ -34,16 +34,35 @@
   <tbody>
   @foreach($data_test as $psn)
     <tr>
-      <td>{{$loop->iteration}}</td>
-      <td>{{$psn->nama_test}}</td>
-      <td>{{$psn->harga}}</td>
-      <td>{{$psn->bahan}}</td>
+      <td>{{ $loop->iteration }}</td>
+      <td>{{ $psn->nama_test }}</td>
+      <td>{{ $psn->harga }}</td>
+      <td>{{ $psn->bahan}}</td>
       <td>{{$psn->nama_jenis}}</td>
-      <td><a href="#" class="btn btn-primary btn-flat btn-xs" ><i class="fa fa-pencil"></i> Edit</a>
-        <a href="#" class="btn btn-danger btn-flat btn-xs" ><i class="fa fa-trash"></i> Delete</a></td>
+      <td><a href="{{ url('/edit/' .$psn->kd_test) }}" class="btn btn-primary btn-flat btn-xs" ><i class="fa fa-pencil"></i> Edit</a>
+          <a href="{{ url('/hapus/' .$psn->kd_test) }}" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="btn btn-danger btn-flat btn-xs hapus" ><i class="fa fa-trash"></i> Delete</a></td>
     </tr>
     @endforeach
   </tbody>
 </table>
-
+{{ $data_test->links() }}
 @endsection
+
+<script>
+        jQuery(document).ready(function($){
+            $('.hapus').on('click',function(){
+                var getLink = $(this).attr('href');
+                swal({
+                        title: 'Alert',
+                        text: 'Hapus Data?',
+                        html: true,
+                        confirmButtonColor: '#d9534f',
+                        showCancelButton: true,
+                        },function(){
+                        window.location.href = getLink
+                    });
+                return false;
+            });
+        });
+	 
+    </script>
