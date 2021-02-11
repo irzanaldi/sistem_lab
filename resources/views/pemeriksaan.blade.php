@@ -105,7 +105,7 @@ $("#tambah").on('click',function(){
   count=$('table tr').length;
   
     var data="<tr>";
-      data+="<td width='5%';><input class='pemeriksaan autocomplete_txt' type='text' data-type='kode'  id='kode_"+i+"'  name='kode[]'  readonly/>  </td>"
+      data+="<td width='5%';><input class='pemeriksaan form-control autocomplete_txt' type='text' data-type='kode'  id='kode_"+i+"'  name='kode[]'  readonly/>  </td>"
       data+="<td><input class='form-control autocomplete_txt' type='text' data-type='test' id='test_"+i+"' name='test[]'/></td>";
       data+="<td><input class='form-control autocomplete_txt' type='text' data-type='jenis' id='jenis_"+i+"' name='jenis[]'  readonly/></td>";
       data+="<td><input class='form-control autocomplete_txt' type='text' data-type='bahan' id='bahan_"+i+"' name='bahan[]'  readonly/></td>";
@@ -114,6 +114,7 @@ $("#tambah").on('click',function(){
   i++;
 });
         
+
 
 
 //autocomplete script

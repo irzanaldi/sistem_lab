@@ -19,7 +19,9 @@ class MasterTest extends Controller
         $test=DB::table('data_test')
         ->join('data_jenis', 'data_test.kd_jenis', '=', 'data_jenis.kd_jenis')
         ->paginate(15);
-        return view ('test', ['data_test' => $test]);
+        $jenis_test=DB::table('data_jenis')
+        ->paginate(15);
+        return view ('test', ['data_test' => $test, 'jenis_test' => $jenis_test]);
     }
 
     /**

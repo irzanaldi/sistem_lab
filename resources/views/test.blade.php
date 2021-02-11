@@ -19,8 +19,7 @@
         </form>
     <a class="btn btn-primary mt-2" role="button" data-bs-toggle="button" style="color:white;" href="{{ url('/formtest') }}">input</a>
 
-
-    <table class="table">
+    <table class="table p1">
   <thead>
     <tr>
       <th scope="col">No</th>
@@ -45,7 +44,6 @@
     @endforeach
   </tbody>
 </table>
-{{ $data_test->links() }}
 @endsection
 
 <script>
@@ -64,5 +62,6 @@
                 return false;
             });
         });
-	 
+
+      
     </script>

@@ -30,6 +30,9 @@ Route::post('/inputpasien', 'MasterPasien@store');
 Route::get('/instansi', 'MasterInstansi@index');
 Route::get('/forminstansi', 'MasterInstansi@create');
 Route::post('/inputinstansi', 'MasterInstansi@store');
+Route::get('/editinstansi/{id}', 'MasterInstansi@edit');
+Route::post('/updateinstansi', 'MasterInstansi@update');
+Route::get('/delete/{id}', 'MasterInstansi@destroy');
 
 //Input Test
 Route::get('/test', 'MasterTest@index');

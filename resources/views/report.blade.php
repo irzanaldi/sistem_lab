@@ -62,7 +62,7 @@ p{
 <tr>         
         <td><span >Perihal</span></td>         
         <td><span >:</span></td>         
-        <td><span >Laporan Keuangan</span></td>       
+        <td><span >Tagihan Keuangan</span></td>       
 </tr>
 
 
@@ -82,9 +82,12 @@ p{
         <td width="140"></td>       
 </tr>
 
+<tr>        
+        <td><span >Bagian Keuangan</span></td>                   
+</tr>
 
 <tr>        
-        <td><span >Dr. Siswanto Darmadi</span></td>                   
+        <td><span >{{$pemeriksaan->nama_instansi}}</span></td>                   
 </tr>
 
 <tr>        
@@ -94,7 +97,7 @@ p{
 </table>
 
 <div>
-        <p>Dengan hormat, bersama dengan ini kami sampaikan laporan keuangan bulanan lab kedungdoro cabang bsd city untuk periode
+        <p>Dengan hormat, bersama dengan ini kami sampaikan laporan tagihan bulanan {{$pemeriksaan->nama_instansi}} untuk periode
         bulan ini dengan rincian sebagai berikut :</p>
 </div>
 
@@ -117,7 +120,7 @@ p{
 <tr>        
          <td><span >Tagihan</span></td>        
          <td><span >:</span></td>        
-         <td><span >{{$pemeriksaan->total}}</span></td>       
+         <td><span >Rp. {{$pemeriksaan->total}}</span></td>       
 </tr>
 
 <tr>         
@@ -140,7 +143,7 @@ p{
 <div style="float:right;margin-top:150;">
        <p>Dengan Hormat,</p>  
        <p>Kepala Lab Cabang BSD City</p> <br><br><br><br><br>
-       <p>(Saras Asri)</p> 
+       <p>Asri Ika Saraswati</p> 
 
 </div>
 

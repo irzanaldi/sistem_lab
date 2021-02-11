@@ -74,6 +74,10 @@ class MasterInstansi extends Controller
     public function edit($id)
     {
         //
+        $instansi=DB::table('data_instansi')
+        ->where('data_instansi.kd_instansi', "=", $id)
+        ->get();
+        return view ('form/edit/edit_instansi', ['instansi' => $instansi]);
     }
 
     /**
@@ -83,9 +87,21 @@ class MasterInstansi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        DB::table('data_instansi')->where('data_instansi.kd_instansi', "=", $request->id)->update([
+            'nama_instansi' => $request->namainstansi,
+            'dokter' => $request->dokter,
+            'alamat_instansi' => $request->alamat,
+            'kota' => $request->kota,
+            'diskon' => $request->diskon,
+            'npwp' => $request->npwp,
+            'email' => $request->email,
+            'no_telp_instansi' => $request->nomer
+        ]);
+
+        return redirect('/instansi')->with(['success' => 'Berhasil Diubah']);
     }
 
     /**
@@ -97,5 +113,7 @@ class MasterInstansi extends Controller
     public function destroy($id)
     {
         //
+        DB::table('data_instansi')->where('data_instansi.kd_instansi', '=', $id)->delete();
+        return redirect('/instansi')->with(['success' => 'Berhasil Dihapus']);;
     }
 }

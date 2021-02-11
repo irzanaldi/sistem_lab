@@ -30,6 +30,7 @@
       <th scope="col">NPWP</th>
       <th scope="col">Email</th>
       <th scope="col">Nomer Telpon</th>
+      <th scope="col">Opsi</th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +45,9 @@
       <td>{{$psn->npwp}}</td>
       <td>{{$psn->email}}</td>
       <td>{{$psn->no_telp_instansi}}</td>
+      <td><a href="{{ url('/editinstansi/' .$psn->kd_instansi) }}" class="btn btn-primary btn-flat btn-xs" ><i class="fa fa-pencil"></i> Edit</a>
+          <a href="{{ url('/delete/' .$psn->kd_instansi) }}" onclick="return confirm('Anda yakin mau menghapus item ini ?')" class="btn btn-danger btn-flat btn-xs hapus" ><i class="fa fa-trash"></i> Delete</a></td>
+  
     </tr>
     @endforeach
   </tbody>

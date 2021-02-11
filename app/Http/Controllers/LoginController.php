@@ -6,7 +6,7 @@ use App\ModelUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facedes\DB;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -21,7 +21,13 @@ class LoginController extends Controller
             return redirect('/')->with('alert','Kamu harus login dulu');
         }
         else{
-            return view('dashboard');
+             
+for($bulan = 1;$bulan < 13;$bulan++)
+{
+	$query = collect(DB::select("select count(no_kwitansi) as jumlah from data_pemeriksaan where MONTH(tanggal)='$bulan'"))->first();
+	$jumlah_produk[] = $query->jumlah;
+}
+            return view('dashboard',compact('jumlah_produk'));
         }
     }
 

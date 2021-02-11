@@ -2,6 +2,8 @@
 @section ('tittle', 'Test')
 @section('content')
 <h1>Form Input Test</h1>
+
+
 @foreach($data_test as $test)
 <form action="{{ url('/update') }}" method="POST">
 {{ csrf_field() }}
