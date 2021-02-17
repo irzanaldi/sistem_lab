@@ -266,7 +266,7 @@ html {
     #formContent {
       -webkit-border-radius: 10px 10px 10px 10px;
       border-radius: 10px 10px 10px 10px;
-      background: rgb(241, 8, 8);
+      background: #fff;
       padding: 30px;
       width: 90%;
       max-width: 450px;

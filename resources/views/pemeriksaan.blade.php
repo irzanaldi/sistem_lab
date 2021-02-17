@@ -18,6 +18,7 @@
     @if ($errors->has('namapasien'))
        <span class="text-danger">{{ $errors->first('namapasien') }}</span>
     @endif
+    <label for="floatingInputInvalid" style="color:red;">Wajib Diisi !</label>
   </div>
   <div class="col-3">
   <label for="inputPassword4" class="form-label">Nama Instansi</label>
@@ -30,6 +31,7 @@
     @if ($errors->has('instansi'))
        <span class="text-danger">{{ $errors->first('instansi') }}</span>
     @endif
+    <label for="floatingInputInvalid" style="color:red;">Wajib Diisi !</label>
   </div>
   <div class="col-3">
   <label for="inputAddress" class="form-label">Inisial</label>
@@ -39,6 +41,7 @@
         <option value="Mrs. ">Mrs.</option>
         <option value="Ny. ">Ny.</option>
     </select>
+    <label for="floatingInputInvalid" style="color:red;">Wajib Diisi !</label>
   </div>
   <div class="col-md-3">
   <label for="inputAddress" class="form-label">Jenis Kelamin</label>
@@ -47,6 +50,7 @@
         <option value="Laki-Laki">Laki-Laki</option>
         <option value="Perempuan">Perempuan</option>
     </select>
+    <label for="floatingInputInvalid" style="color:red;">Wajib Diisi !</label>
   </div>
   <div class="col-3">
   <label for="inputAddress2" class="form-label">Alamat</label>
@@ -55,6 +59,7 @@
   <div class="col-3">
   <label for="inputCity" class="form-label">Umur</label>
     <input type="text" class="form-control" id="umur" name="umur" autocomplete="off">
+    <label for="floatingInputInvalid" style="color:red;">Wajib Diisi !</label>
   </div>
   <div class="col-md-2">
   <label for="inputZip" class="form-label">Nomer Telpon</label>
@@ -62,6 +67,7 @@
     @if ($errors->has('nomer'))
        <span class="text-danger">{{ $errors->first('nomer') }}</span>
     @endif
+    <label for="floatingInputInvalid" style="color:red;">Wajib Diisi !</label>
   </div>
 </div>
 
